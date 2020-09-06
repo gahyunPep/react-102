@@ -31,3 +31,12 @@ export class WineList extends Component {
     );
   }
 }
+
+export class WineListPage extends Component {
+  render() {
+    return [
+      <div>Wines</div>,
+      <p>Region identifier is {this.props.params.regionId}</p>
+    ];
+  }
+}

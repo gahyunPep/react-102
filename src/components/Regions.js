@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 export class Regions extends Component {
+
   onSelectRegion = (e, region) => {
     e.preventDefault();
     this.props.onSelectRegion(region);
@@ -25,5 +26,18 @@ export class Regions extends Component {
         </div>
       </div>
     );
+  }
+}
+
+export class RegionsPage extends Component {
+  state = {
+    loading: false,
+    regions: [],
+  };
+  
+  render(){
+      return(
+          <div>Regions</div>
+      );
   }
 }
