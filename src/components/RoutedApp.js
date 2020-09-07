@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
-import { WineApp, RegionsPage, WineListPage, WinePage, NotFound } from './components';
-import {RegionsPage} from './RegionsPage';
+import { RegionsPage } from './Regions';
+
 
 class RoutedApp extends Component {
     render() {

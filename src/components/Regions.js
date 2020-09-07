@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { Loader } from './Loader';
+import { fetchRegions } from '../services/Wines';
 export class Regions extends Component {
 
   onSelectRegion = (e, region) => {
@@ -34,10 +35,35 @@ export class RegionsPage extends Component {
     loading: false,
     regions: [],
   };
+
+  componentDidMount() {
+    this.setState({ loading: true }, () => {
+      fetchRegions().then(regions => {
+        this.setState({
+          loading: false,
+          regions,
+        });
+      });
+    });
+  }
+
+  onSelectRegion = (region) => {
+    this.props.router.push({
+      pathname: `/regions/${region}`
+    });
+  }
   
-  render(){
-      return(
-          <div>Regions</div>
-      );
+  render() {
+    if (this.state.loading) {
+      return <div className="center-align"><Loader /></div>
+    }
+
+    return(
+      <Regions 
+        onSelectRegion={this.onSelectRegion}
+        regions={this.state.regions}
+        region={{}}
+      />
+    );
   }
 }
