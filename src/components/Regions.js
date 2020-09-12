@@ -10,7 +10,7 @@ export class Regions extends Component {
 
   render() {
     return (
-      <div className="col s12 m6 l3">
+      <div className="col s12 m6 l4 offset-m3 offset-l4">
         <h2 className="center-align">Regions</h2>
         <div className="collection">
           {this.props.regions.map(region => (
@@ -59,11 +59,11 @@ export class RegionsPage extends Component {
     }
 
     return(
-      <Regions 
-        onSelectRegion={this.onSelectRegion}
-        regions={this.state.regions}
-        region={{}}
-      />
+        <Regions 
+          onSelectRegion={this.onSelectRegion}
+          regions={this.state.regions}
+          region={{}}
+        />
     );
   }
 }

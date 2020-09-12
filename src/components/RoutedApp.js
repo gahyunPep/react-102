@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component }from 'react';
 import ReactDOM from 'react-dom';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import { RegionsPage } from './Regions';
+import { WineApp, WineListPage, WinePage, NotFound } from './index.js';
 
 
 class RoutedApp extends Component {
@@ -21,7 +22,11 @@ class RoutedApp extends Component {
 
 export default RoutedApp;
 
-ReactDOM.render(<RoutedApp />, document.getElementById('root'));
+
 
 // top level route <WineApp><RegionsPage/></WineApp> since RegionsPage is default
 // <WineApp><WineListPage/></WineApp>
+
+
+// Rick Chahooks -> useReducer
+// 21:15Rick Chahooks -> useContext

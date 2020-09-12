@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Loader } from './Loader';
+import { fetchWinesFrom } from '../services/Wines';
 
 export class WineList extends Component {
   onSelectWine = (e, wineId) => {
@@ -11,7 +13,7 @@ export class WineList extends Component {
       return null;
     }
     return (
-      <div className="col s12 m6 l3">
+      <div className="col s12 m6 l4 offset-m3 offset-l4">
         <h2 className="center-align">Wines</h2>
         <div className="collection">
           {this.props.wines.map(wine => (
@@ -33,10 +35,38 @@ export class WineList extends Component {
 }
 
 export class WineListPage extends Component {
+  state = {
+    loading: false,
+    wines: [],
+  };
+
+  componentDidMount() {
+    this.setState({loading: true}, () => {
+      fetchWinesFrom(this.props.params.regionId).then(wines => {
+        this.setState({
+          loading: false,
+          wines,
+        });
+      });
+    });
+  }
+
+  onSelectWine = (wine) => {
+    this.props.router.push({
+      pathname: `/regions/${this.props.params.regionId}/wines/${wine}`
+    });
+  }
+
   render() {
-    return [
-      <div>Wines</div>,
-      <p>Region identifier is {this.props.params.regionId}</p>
-    ];
+    if (this.state.loading) {
+      return <div className="center-align"><Loader /></div>
+    }
+
+    return(
+        <WineList
+          onSelectWine={this.onSelectWine}
+          wines={this.state.wines}
+        />
+    );
   }
 }

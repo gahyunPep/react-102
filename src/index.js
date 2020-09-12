@@ -3,11 +3,11 @@ import 'whatwg-fetch'; // yeah, polyfill all the things !!!
 import Symbol from 'es-symbol';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { WineApp } from './components';
+import RoutedApp from './components/RoutedApp';
 import './index.css';
 
 if (!window.Symbol) {
   window.Symbol = Symbol; // yeah, polyfill all the things !!!
 }
 
-ReactDOM.render(<WineApp />, document.getElementById('root'));
+ReactDOM.render(<RoutedApp />, document.getElementById('root'));
